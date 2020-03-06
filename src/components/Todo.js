@@ -43,23 +43,22 @@ const Todo = () => {
         })
     }
     return (
-        <div>
-            <div>
-                <ul>
+        <div className="container mt-5">
+            <div class="col-3 mx-auto">
+                <ul className="list-group list-group-flush">
                     {todoState.todoList.map((item, i) =>
-                        <li key={i}>
+                        <li key={i} className="list-group-item">
                             {!item.taskCompleted && <span>{item.task}</span>}
                             {item.taskCompleted && <span className="textStyle">{item.task}</span>}
-                            <input type="checkbox" name={item.task} value={true} onChange={checkboxHandler} />
-                            <input type="button" value="Delete" name={item.task} onClick={deleteHandler} />
+                            <input type="checkbox" name={item.task} value={true} onChange={checkboxHandler} className="ml-2" />
+                            <input type="button" value="Delete" name={item.task} onClick={deleteHandler} className="ml-2 btn-sm btn-dark" />
                         </li>
                     )}
                 </ul>
             </div>
-            <form onSubmit={submitHandler} >
+            <form onSubmit={submitHandler} class="col-3 mx-auto mt-4" >
                 <input type="text" name="task" value={todoState.task} onChange={onChangeHandler} />
-                <input type="submit" value="Add" />
-                <p>{todoState.task}</p>
+                <input type="submit" value="Add" className="btn-sm btn-primary"/>
             </form>
         </div>
     )
